@@ -6,6 +6,8 @@ using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using CeasarCrypt;
 using CeasarCrypt.Controllers;
+using CeasarCrypt.Functional;
+using CeasarCrypt.Models;
 
 namespace CeasarCrypt.Tests.Controllers
 {
