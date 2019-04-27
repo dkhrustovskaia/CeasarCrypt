@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "Найти ключ";
+}
+
+<div class="container p-5">
+    <h2>Результаты поиска</h2><hr />
+    <h4>Текст был проанализирован частотным анализом. Наиболее подходящим ключом оказался <strong>@ViewBag.Keys[0]</strong></h4>
+    @using (Html.BeginForm("Download", "Cryption", FormMethod.Post))
+    {
+        <textarea type="text" rows="7" name="text" class="m-textarea" readonly>@ViewBag.Texts[0]</textarea>
+        <input name="fileName" type="hidden" value="@ViewBag.FileName">
+        <button type="submit">Скачать</button>
+    }
+    <hr />
+    <h2>Другие варианты:</h2>
+    @for (int i = 1; i < ViewBag.Keys.Length; i++)
+    {
+        using (Html.BeginForm("Download", "Cryption", FormMethod.Post))
+        {
+            <h3>Ключ: @ViewBag.Keys[i]</h3>
+            <textarea type="text" rows="6" name="text" class="m-textarea" readonly>@ViewBag.Texts[i]</textarea>
+            <input name="fileName" type="hidden" value="@ViewBag.FileName">
+            <button type="submit">Скачать</button>
+        }
+        if (i != ViewBag.Keys.Length - 1)
+        {
+            <hr/>
+        }
+    }
+</div>

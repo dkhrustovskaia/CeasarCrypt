@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "Зашифровка";
+}
+<div class="container p-5">
+    <h2>Что произойдёт в результате шифрования?</h2><hr/>
+    <h4>Каждая буква текста будет сдвинута вправо по алфавиту. Таким образом, текст будет невозможно прочесть, но его можно будет потом <a href="/Cryption/Decryption">расшифровать</a></h4>
+    
+    @using (Html.BeginForm("Cryption", "Cryption", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <h2>Исходные данные:</h2>
+        <textarea name="text" placeholder="Ваш текст"></textarea><br/>
+        <input type="file" name="file" class="text-center m-auto" accept="text/plain,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"><br/><br/>
+        <span class="pr-1">Ключ:</span><output id="keyLabel">0</output><br/>
+        <div class="row pr-3 pl-3">
+            <span>-32</span>
+            <input type="range" class="ml-2 mr-2" id="key" min="-32" value="0" max="32" step="1" name="key" oninput="keyLabel.value = key.value"/>
+            <span>32</span>
+        </div><br/>
+        <button type="submit">Зашифровать</button>
+    }
+</div>

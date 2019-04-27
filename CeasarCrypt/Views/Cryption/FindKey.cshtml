@@ -1,0 +1,16 @@
+﻿@{
+    ViewBag.Title = "Найти ключ";
+}
+
+<div class="container p-5">
+    <h2>Что произойдёт в результате поиска?</h2><hr/>
+    <h4>Наш алгоритм обращается к базе данных слов, которые чаще все используются. Шанс нахождения правильного ключа 80%</h4>
+
+    @using (Html.BeginForm("FindKey", "Cryption", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <h2>Исходные данные:</h2>
+        <textarea name="text" placeholder="Ваш текст"></textarea><br />
+        <input type="file" name="file" class="text-center m-auto" accept="text/plain,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"><br /><br />
+        <button type="submit">Найти ключ</button>
+    }
+</div>
