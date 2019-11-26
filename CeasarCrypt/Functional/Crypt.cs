@@ -9,8 +9,6 @@ namespace CeasarCrypt.Functional
 {
     public static class Crypt
     {
-        private static WordDatabase database = new WordDatabase();
-
         private static string lowerAlphabet = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
         private static string upperAlphabet = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ";
         private static string fullAlphabet = lowerAlphabet + upperAlphabet + " ";
@@ -31,7 +29,7 @@ namespace CeasarCrypt.Functional
         public static int[] GetKeys(string text)
         {
             string rusText = "";
-            foreach (var item in text)
+            foreach (char item in text)
             {
                 if (fullAlphabet.Contains(item))
                 {
@@ -60,10 +58,6 @@ namespace CeasarCrypt.Functional
                             keys[i].Priority++;
                         else
                             keys[i].Priority -= 5;
-                    }
-                    else if (word.Length > 4 && rnd.Next(3) == 0 && database.Contains(word))
-                    {
-                        keys[i].Priority += 10;
                     }
                 }
             }
